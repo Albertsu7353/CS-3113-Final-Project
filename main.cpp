@@ -1,5 +1,7 @@
 //Albert Su
 //Score goals
+//Left, right for player 2. A,D for player 1. Jump is Up and W. Throw is Down and S
+// 2 points for walking ball in, 1 for throwing
 
 #ifdef _WINDOWS
 #include <GL/glew.h>
@@ -134,8 +136,6 @@ bool readHeader(std::ifstream &stream) {
 		return true;
 	}
 }
-
-
 
 bool readLayerData(std::ifstream &stream) {
 	string line;
@@ -663,10 +663,6 @@ int main(int argc, char *argv[])
 	particles.position.y = -5.0;
 	particles.Reset();
 	*/
-
-	state = START;
-	
-
 	bool done = false;
 	while (!done) {
 		while (SDL_PollEvent(&event)) {
@@ -691,6 +687,8 @@ int main(int argc, char *argv[])
 		switch (state){
 		case START:
 			//main menu
+			vertexData.clear();
+			texCoordData.clear();
 			modelMatrix.identity();
 			modelMatrix.Translate(-4.0, 1, 0);
 			program.setModelMatrix(modelMatrix);
@@ -707,6 +705,8 @@ int main(int argc, char *argv[])
 			modelMatrix.Translate(0, -1, 0);
 			program.setModelMatrix(modelMatrix);
 			DrawText(&program, font, "Q for Quit", 0.7f, -.3f);
+			p1Score = 0;
+			p2Score = 0;			
 
 			if (keys[SDL_SCANCODE_1])
 			{
@@ -714,6 +714,10 @@ int main(int argc, char *argv[])
 				lastFrameTicks = (float)SDL_GetTicks() / 1000.0f;
 				readFile("level.txt");
 				level = 1;
+				player2.x = 11;
+				player.x = 1.2;
+				player.y = -2;
+				player2.y = -2;
 				state = GAME;
 			}
 			else if (keys[SDL_SCANCODE_2])
@@ -722,8 +726,10 @@ int main(int argc, char *argv[])
 				lastFrameTicks = (float)SDL_GetTicks() / 1000.0f;
 				readFile("level2.txt");
 				level = 2;
-				player.y = -7.0;
-				player2.y = -7.0;
+				player2.x = 11;
+				player.x = 1.2;
+				player.y = -5.0;
+				player2.y = -5.0;
 				state = GAME;
 			}
 			else if (keys[SDL_SCANCODE_3])
@@ -731,6 +737,10 @@ int main(int argc, char *argv[])
 				//gets the starting tick
 				lastFrameTicks = (float)SDL_GetTicks() / 1000.0f;
 				readFile("level3.txt");
+				player2.x = 11;
+				player.x = 1.2;
+				player.y = -2;
+				player2.y = -2;
 				level = 3;
 				state = GAME;
 			}

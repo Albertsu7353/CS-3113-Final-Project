@@ -16,7 +16,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
-
+//#include "Emmiter.h"
 using namespace std;
 #ifdef _WINDOWS
 #define RESOURCE_FOLDER ""

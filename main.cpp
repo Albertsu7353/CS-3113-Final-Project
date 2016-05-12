@@ -16,7 +16,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
-#include "Emitter.h"
+
 using namespace std;
 #ifdef _WINDOWS
 #define RESOURCE_FOLDER ""
@@ -295,12 +295,11 @@ void checkPlayer(Entity* player)
 			else if (level == 2)
 			{
 			player->velocity_y = -(player->velocity_y)*1.001;
-			Mix_PlayChannel(-1, collision, 0);
 			}
 			else if (level == 3)
 			{
 				player->velocity_y = 0.1;
-				player->friction_x = 1.01;
+				player->friction_x = 1.001;
 			}
 			
 			player->collidedBottom = true;
@@ -622,7 +621,7 @@ int main(int argc, char *argv[])
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
 	Mix_Music *music;
 	music = Mix_LoadMUS("music.wav");
-	//Mix_PlayMusic(music, -1);
+	Mix_PlayMusic(music, -1);
 	
 	collision = Mix_LoadWAV("bounce.wav");
 	score = Mix_LoadWAV("score.wav");

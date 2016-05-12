@@ -538,7 +538,7 @@ void checkGoal(Entity* p1, Entity* p2, Entity* ball)
 		p1->velocity_x = 0;
 		p2->velocity_x = 0;
 		Mix_PlayChannel(-1, score, 0);
-		if (level == 3)
+		if (level != 2)
 		{
 			ball->y = -11.0;
 		}
@@ -559,7 +559,7 @@ void checkGoal(Entity* p1, Entity* p2, Entity* ball)
 		p1->velocity_x = 0;
 		p2->velocity_x = 0;
 		Mix_PlayChannel(-1, score, 0);
-		if (level == 3)
+		if (level !=2)
 		{
 			ball->y = -11.0;
 		}
@@ -582,7 +582,7 @@ void checkGoal(Entity* p1, Entity* p2, Entity* ball)
 		p1->velocity_x = 0;
 		p2->velocity_x = 0;
 		Mix_PlayChannel(-1, score, 0);
-		if (level == 3)
+		if (level !=2)
 		{
 			ball->y = -11.0;
 		}
@@ -604,7 +604,7 @@ void checkGoal(Entity* p1, Entity* p2, Entity* ball)
 		p2->velocity_x = 0;
 		p2Score += 1;
 		Mix_PlayChannel(-1, score, 0);
-		if (level == 3)
+		if (level !=2)
 		{
 			ball->y = -11.0;
 		}
